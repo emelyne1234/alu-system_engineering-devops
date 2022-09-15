@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# connecting to a server without typing a password
+
+
+authentication no
+username  ubuntu
+ip  54.234.226.73
