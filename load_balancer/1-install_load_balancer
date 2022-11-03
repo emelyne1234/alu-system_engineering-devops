@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#setting up load balancing
+sudo apt-get install --no-install-recommends software-properties-common
+sudo add-apt-repository ppa:vbernat/haproxy-2.6
+sudo apt-get install haproxy=2.6.\*
+
+echo "ENABLED=1" | sudo tee /etc/default/haproxy
+
+
+CONFIG="frontend haproxynode\n\tbind *:80\n\tmode http\n\tdefault_backend backendnodes\n\n\nbackend backendnodes\n\tbalance roundrobin
+\n\toption forwardfor\n\thttp-request set-header X-Forwarded-Port %[dst_port]\n\thttp-request add-header X-Forwarded-Proto http if { ssl_fc }\n\toption httpchk HEAD \/ HTTP\/1.1\\r\\nHost:localhost\n\tserver 4826-web-01 52.91.59.143:80 check\n\tserver 4826-web-02 54.90.160.55:80 check"
+
+DES="/etc/haproxy/haproxy.cfg"
+sudo sed -i "45i $CONFIG" $DES
+sudo service haproxy start
