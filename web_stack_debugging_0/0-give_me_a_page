@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# the script fixes the error
+service apache2 start
