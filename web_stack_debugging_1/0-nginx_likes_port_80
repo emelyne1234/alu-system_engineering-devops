@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # the script configures a server to listen on port 80
-lsof -i -P -n | grep LISTEN
+
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx start
+service nginx restart
