@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# running as the ngoinx user
+pkill "apache2"
+chmod 777 /etc/nginx/nginx.conf
+sed -i "1i user nginx;" /etc/nginx/nginx.conf
+sed -i "s/80 default/8080 default/" /etc/nginx/sites-available/default
+service nginx start
