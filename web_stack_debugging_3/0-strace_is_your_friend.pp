@@ -1,2 +1,2 @@
 #The puppet script is fixing 500 error
-strace -p <10>
+sed -i "s/phpp/php" /var/www/html/wp-settings.php 
