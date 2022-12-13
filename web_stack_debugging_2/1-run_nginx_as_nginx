@@ -2,5 +2,5 @@
 # running as the nginx user
 pkill "apache2"
 chmod 777 /etc/nginx/nginx.conf
-sed -i "s/80 default.nginx/8080 default.nginx/g" /etc/nginx/sites-available/default
+sed -i "s/80 default_server/8080 default_server/g" /etc/nginx/sites-available/default
 sudo -u service nginx start
